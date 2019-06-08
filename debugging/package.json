@@ -1,0 +1,21 @@
+{
+  "name": "debugging-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "debug": "cross-env DEBUG=\"*\" npm run start",
+    "debug-http": "cross-env DEBUG=\"http:*\" npm run start",
+    "debug-calculator": "cross-env DEBUG=\"calculator\" npm run start"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.16.4",
+    "debug": "4.1.1"
+  },
+  "devDependencies": {
+    "cross-env": "5.2.0"
+  }
+}
