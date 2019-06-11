@@ -12,13 +12,11 @@ module.exports = function connect(done) {
         if (err) {
             console.error("could not connect to MongoDB:");
             console.error(err.message);
-            if (done != undefined)
-                done(err);
             return;
         }
 
         console.log("successfully connected to MongoDB.");
         if (done != undefined)
-            done(undefined);
+            done();
     });
 }

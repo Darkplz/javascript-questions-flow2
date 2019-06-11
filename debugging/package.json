@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
+    "debug-app": "cross-env DEBUG=\"app:*\" npm run start",
     "debug": "cross-env DEBUG=\"*\" npm run start",
-    "debug-http": "cross-env DEBUG=\"http:*\" npm run start",
-    "debug-calculator": "cross-env DEBUG=\"calculator\" npm run start"
+    "debug-http": "cross-env DEBUG=\"app:http:*\" npm run start",
+    "debug-calculator": "cross-env DEBUG=\"app:calculator\" npm run start"
   },
   "author": "",
   "license": "ISC",

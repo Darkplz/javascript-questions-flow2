@@ -2,8 +2,8 @@ const createApplication = require('./app')
 const port = 3003
 
 
-const Book = require('./JsonBook')
-const books = new Book('books.json')
-app = createApplication(books)
+const JsonFileDB = require('./JsonFileDB')
+const db = new JsonFileDB('persons.json')
+app = createApplication(db)
 app.listen(port)
 console.log("Server started on port " + port)

@@ -60,6 +60,10 @@ export default class BookCrud extends Component {
                                 <td>
                                     <a href="#" onClick={() => this.update(book)}>update</a>
                                 </td>
+                                <td>
+                                    <a href="#" onClick={() => this.copy(book)}>copy</a>
+                                </td>
+                                
                             </tr>)}
                     </tbody>
                 </table>
@@ -88,9 +92,23 @@ export default class BookCrud extends Component {
         this.setState({ modal: <BookForm initial={Object.assign({}, book)} onCompletion={onCompleteEdit} /> })
     }
 
+    copy = async (book) => {
+        const onCompleteEdit = async(book) => {
+            const response = await fetch(`${URL}`,{method: 'POST', body: JSON.stringify(book), headers:{ 'Accepts': 'application/json', 'Content-Type': 'application/json' } })
+            if (response.ok) {
+                const inserted = await response.json();
+                this.setState(prev => ({books: [...prev.books, inserted]}), this.closeModal);
+            
+            }
+            
+    
+        }
+        this.setState({ modal: <BookForm initial={Object.assign({}, book)} onCompletion={onCompleteEdit} /> })
+    }
+
     create = async() => {
         const onCompleteEdit = async(book) => {
-            const response = await fetch(`${URL}`, { method: 'POST', body: JSON.stringify(book), headers: { 'Accepts': 'application/json', 'Content-Type': 'application/json' } });
+            const response = await fetch(`${URL}`, { method: 'POST', body: JSON.stringify(book), headers:{'Accepts': 'application/json', 'Content-Type': 'application/json' } });
             if (response.ok) {
                 const inserted = await response.json();
                 this.setState(prev => ({books: [...prev.books, inserted]}), this.closeModal);

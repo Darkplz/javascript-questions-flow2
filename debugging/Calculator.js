@@ -1,18 +1,19 @@
 module.exports = class Calculator {
 
-    add(a, b) {
-        return a + b
+    add(x, y) {
+        return x + y
     }
 
-    sub(a, b) {
-        return a - b
+    sub(x, y) {
+        return x - y
     }
 
-    mul(a, b) {
-        return a * b
+    mul(x, y) {
+        return x * y
     }
 
-    div(a, b) {
-        return a / b
+    div(x, y) {
+        return x / y
     }
+
 }

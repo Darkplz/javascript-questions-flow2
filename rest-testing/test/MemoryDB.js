@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-class Book {
+class MemoryDB {
 
     constructor(initialArray) {
         this.initialArray = initialArray;
@@ -8,42 +8,42 @@ class Book {
     }
 
     reset() {
-        this.books = {}
-        this.initialArray.forEach(initialBook => {
-            this.books[initialBook.id] = { ...initialBook }
+        this.persons = {}
+        this.initialArray.forEach(initialPerson => {
+            this.persons[initialPerson.id] = { ...initialPerson }
         })
     }
 
     async all() {
-        return Object.values(this.books)
+        return Object.values(this.persons)
     }
 
     async clear() {
-        this.books = {}
+        this.persons = {}
     }
 
     async get(id) {
-        const found = this.books[id]
+        const found = this.persons[id]
         if (!found)
             return null;
 
         return { ...found }
     }
 
-    async add(book) {
-        book.id = this.__randomId()
-        this.books[book.id] = book
-        return book
+    async add(person) {
+        person.id = this.__randomId()
+        this.persons[person.id] = person
+        return person
     }
 
-    async put(id, book) {
+    async put(id, person) {
         const found = await this.get(id)
         if (!found)
             return null
 
         Object.keys(found).forEach(key => {
-            if (book[key] != undefined) {
-                found[key] = book[key]
+            if (person[key] != undefined) {
+                found[key] = person[key]
             }
         })
         return { ...found }
@@ -52,7 +52,7 @@ class Book {
     async delete(idToDelete) {
         const found = this.get(idToDelete)
         if (found) {
-            delete this.books[idToDelete]
+            delete this.persons[idToDelete]
             return found
         }
 
@@ -69,4 +69,4 @@ class Book {
     }
 }
 
-module.exports = Book
+module.exports = Person

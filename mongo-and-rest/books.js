@@ -1,4 +1,5 @@
-[{
+
+module.exports = [{
     "title": "Things Fall Apart",
     "year": 1958,
     "authors": [{
